@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Comment</title>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Comment</h1>
+        <a href='/'>Homepage</a>
+    </div>
+
+    <form action="/add?_csrf=<%=csrf%>" method="post">
+        <label>Name:</label>
+        <input type="text" name="user_name" required>
+        <br>
+        <label>Comment</label>
+        <br>
+        <textarea cows="30" rows="10" name="comment" required></textarea>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
