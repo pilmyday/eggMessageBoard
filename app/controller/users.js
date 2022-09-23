@@ -24,8 +24,9 @@ class UserController extends Controller {
 
     async show() {
         const ctx = this.ctx;
+        const id = toInt(ctx.params.userId)
 
-        const comment = await ctx.model.User.findByPk(toInt(ctx.params.user_id));
+        const comment = await ctx.model.User.findByPk(id);
 
         await ctx.render('show.html', {
             csrf: this.ctx.csrf,
@@ -35,9 +36,12 @@ class UserController extends Controller {
 
     async create() {
         const ctx = this.ctx;
-        const { user_name, comment } = ctx.request.body;
+        const {
+            userName,
+            comment,
+        } = ctx.request.body;
 
-        const user = await ctx.model.User.create({ user_name, comment });
+        const user = await ctx.model.User.create({ userName, comment });
         ctx.status = 201;
         ctx.body = user;
 
@@ -46,8 +50,8 @@ class UserController extends Controller {
 
     async update() {
         const ctx = this.ctx;
-        const id = toInt(ctx.params.user_id);
-        const { user_name, comment } = ctx.request.body;
+        const id = toInt(ctx.params.userId);
+        const { userName, comment } = ctx.request.body;
 
         const user = await ctx.model.User.findByPk(id);
         if (!user) {
@@ -55,7 +59,7 @@ class UserController extends Controller {
             return
         };
 
-        await user.update({ user_name, comment });
+        await user.update({ userName, comment });
         ctx.body = user;
 
         ctx.redirect('/');
@@ -63,7 +67,7 @@ class UserController extends Controller {
 
     async destroy() {
         const ctx = this.ctx;
-        const id = toInt(ctx.params.user_id);
+        const id = toInt(ctx.params.userId);
 
         const user = await ctx.model.User.findByPk(id)
         if (!user) {
