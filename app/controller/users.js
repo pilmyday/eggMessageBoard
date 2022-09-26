@@ -3,6 +3,7 @@ const Controller = require('egg').Controller;
 function toInt(str) {
     if (typeof str === 'number') return str;
     if (!str) return str;
+    
     return parseInt(str, 10) || 0;
 }
 
@@ -56,6 +57,7 @@ class UserController extends Controller {
         const user = await ctx.model.User.findByPk(id);
         if (!user) {
             ctx.status = 404
+            
             return
         };
 
@@ -72,6 +74,7 @@ class UserController extends Controller {
         const user = await ctx.model.User.findByPk(id)
         if (!user) {
             ctx.status = 404
+            
             return
         };
         await user.destroy();
