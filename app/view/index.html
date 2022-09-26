@@ -14,8 +14,8 @@
         <% for(var i = comments.length-1; i>= 0; i--){ %>
         <table>
             <tr>
-                <td><%= comments[i].user_id %></td>
-                <td><a href="/show/<%= comments[i].user_id%>"><%= comments[i].user_name%></a></td>
+                <td><%= comments[i].userId %></td>
+                <td><a href="/show/<%= comments[i].userId%>"><%= comments[i].userName%></a></td>
                 <td><%= comments[i].comment%></td>
                 <td><%= comments[i].updatedAt%></td>
                 <td><a href="/destroy/<%= comments[i].user_id %>">Delete</a></td>
