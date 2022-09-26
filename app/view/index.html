@@ -18,7 +18,7 @@
                 <td><a href="/show/<%= comments[i].userId%>"><%= comments[i].userName%></a></td>
                 <td><%= comments[i].comment%></td>
                 <td><%= comments[i].updatedAt%></td>
-                <td><a href="/destroy/<%= comments[i].user_id %>">Delete</a></td>
+                <td><a href="/destroy/<%= comments[i].userId %>">Delete</a></td>
             </tr>
         </table>
         <% } %>
